@@ -1,0 +1,21 @@
+
+import EditorConfig from "./monaco-editor-config.js";
+import loadComponents from "./load-components.js";
+
+Object.entries(loadComponents).forEach(([name, content]) => {
+    let element = document.querySelector(`[load-component="${name}"]`);
+    if(element) {
+        element.innerHTML = content;
+    }
+})
+
+const editor = monaco.editor.create(document.getElementById('editor'), EditorConfig);
+
+let components = document.querySelectorAll('[load-component]');
+
+// Object.values(components).forEach(async element => {
+//     let componentName = element.getAttribute('load-component');
+//     let component = (await import(`./components/${componentName}.js`));
+//     console.log(component);
+//     element.innerHTML = component('teste');
+// })

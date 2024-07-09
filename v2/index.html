@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script>
+		window.BASE_PATH = (new URL('..', location.toString())).pathname.slice(0, -1);
+	</script>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<link rel="stylesheet" data-name="vs/editor/editor.main" href="lib/monaco-editor/min/vs/editor/editor.main.css" />
+	<script src="lib/tailwind.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+				}
+			}
+		}
+
+		
+	</script>
+</head>
+
+<body>
+	<header class="bg-gray-500 h-12 flex items-center">
+		<h1 class="text-white text-xl">JS Exercise</h1>
+	</header>
+	<button class="bg-red-300 p-2 border-[1px] border-black" onclick="toggleExerciseList()">MENU</button>
+	<div id="ButtonGroup">
+	</div>
+	<div class="flex gap-1 2xl:w-[75%] m-auto">
+		<div class="min-w-[250px] grow hidden lg:block" id="ExerciseList">
+		</div>
+		<div class="w-full h-screen relative flex  flex-row" id="main">
+			<div class="h-screen max-w-[600px] w-full order-2">
+				<div id="editor" class="w-full h-full"></div>
+			</div>
+			<div class="flex h-full w-full grow" id="ExerciseContent">
+				des
+			</div>
+	
+		</div>
+	</div>
+	
+	<script>
+		var require = { paths: { vs: 'lib/monaco-editor/min/vs' } };
+	</script>
+
+	<script src="lib/monaco-editor/min/vs/loader.js" defer></script>
+	<script src="lib/monaco-editor/min/vs/editor/editor.main.nls.js" defer></script>
+	<script src="lib/monaco-editor/min/vs/editor/editor.main.js" defer></script>
+	<script src="js/main.js" type="module" defer>
+	</script>
+</body>
+
+</html>
