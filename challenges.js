@@ -1,4 +1,7 @@
 import helloWorld from "./exercise/hello-word.js";
+import helloWorld2 from "./exercise/hello-word-2.js";
+import sejaBemVindo from "./exercise/seja-bem-vndo.js";
+import antecessor from "./exercise/antecessor.js";
 import somarNumeros from "./exercise/somar-numeros.js";
 import somarImpares from "./exercise/somar-impares.js";
 import criptografiaCesar from "./exercise/criptografia-cesar.js";
@@ -12,6 +15,9 @@ import primeiraLetraMaiuscula from "./exercise/primeira-letra-maiuscula.js";
 
 export default {
   helloWorld,
+  sejaBemVindo,
+  antecessor,
+  helloWorld2,
   somarNumeros,
   somarImpares,
   criptografiaCesar,

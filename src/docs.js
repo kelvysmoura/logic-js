@@ -29,5 +29,6 @@ export default {
     getMonth: '[Date.prototype.getMonth](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Date/getMonth)',
     getFullYear: '[Date.prototype.getFullYear](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Date/getFullYear)',
     slice: '[Array.slice](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)',
+    increment: '[Increment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Increment)',
 }
 
