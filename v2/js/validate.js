@@ -1,6 +1,6 @@
 
 export default {
-    simplesVariable (exercise content) {
+    simplesVariable (exercise, content) {
 
     }
 }
