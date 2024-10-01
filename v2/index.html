@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 
 <head>
 	<script>
@@ -9,34 +9,55 @@
 	<link rel="stylesheet" data-name="vs/editor/editor.main" href="lib/monaco-editor/min/vs/editor/editor.main.css" />
 	<script src="lib/tailwind.js"></script>
 	<link rel="stylesheet" href="css/style.css">
+	<script src="lib/showdown.min.js"></script>
 	<script>
 		tailwind.config = {
 			theme: {
 				extend: {
+					colors: {
+						vscode: {
+							DEFAULT: '#1e1e1e',
+							50: '#f7f7f7',
+							100: '#e0e0e0',
+							200: '#c1c1c1',
+							300: '#a3a3a3',
+							400: '#848484',
+							500: '#1e1e1e',
+							600: '#1a1a1a',
+							700: '#141414',
+							800: '#0f0f0f',
+							900: '#0b0b0b',
+							950: '#040404'
+						},
+					}
 				}
 			}
 		}
-
-		
 	</script>
 </head>
 
-<body>
-	<header class="bg-gray-500 h-12 flex items-center">
-		<h1 class="text-white text-xl">JS Exercise</h1>
-	</header>
-	<button class="bg-red-300 p-2 border-[1px] border-black" onclick="toggleExerciseList()">MENU</button>
-	<div id="ButtonGroup">
-	</div>
-	<div class="flex gap-1 2xl:w-[75%] m-auto">
-		<div class="min-w-[250px] grow hidden lg:block" id="ExerciseList">
+<body class="bg-vscode text-vscode-50 overflow-hidden">
+	<div class="flex 2xl:w-[80%] mx-auto my-10 h-screen">
+		<header>
+			<button id="run-code">EXECUTE</button>
+		</header>
+		<div id="ExerciseList" class="min-w-[250px] grow hidden lg:block h-full overflow-hidden bg-vscode text-white" >
 		</div>
+		
 		<div class="w-full h-screen relative flex  flex-row" id="main">
-			<div class="h-screen max-w-[600px] w-full order-2">
+			<div class="h-screen max-w-[50%] w-full">
 				<div id="editor" class="w-full h-full"></div>
 			</div>
-			<div class="flex h-full w-full grow" id="ExerciseContent">
-				des
+			<div class="h-screen w-full grow bg-vscode py-2 px-4 scroll-style h-full overflow-auto bg-vscode text-white">
+				<div id="ExerciseContentByHash" class="mb-10">
+				</div>
+				<div id="ExerciseCases" class="flex gap-2 flex-wrap m-auto">
+					<span class="p-2 text-lg w-full">Variavel hello que guarda a frase "Hello World"</span>
+					<span class="p-2 text-lg w-full">Variavel hello que guarda a frase "Hello World"</span>
+					<span class="p-2 text-lg w-full">Variavel hello que guarda a frase "Hello World"</span>
+					<span class="p-2 text-lg w-full">Variavel hello que guarda a frase "Hello World"</span>
+					<span class="p-2 text-lg w-full">Variavel hello que guarda a frase "Hello World"</span>
+				</div>
 			</div>
 	
 		</div>

@@ -1,40 +1,40 @@
 import ExerciseItem from './components/ExerciseItem.js';
 
 let colorEasy = {
-    bgColor: "bg-emerald-200",
-    bgHover: "bg-emerald-300",
+    bgColor: "bg-emerald-800",
+    bgHover: "bg-emerald-900",
 }
 
 let colorMedium = {
-    bgColor: "bg-amber-200",
-    bgHover: "bg-amber-300",
+    bgColor: "bg-yellow-800",
+    bgHover: "bg-yellow-900",
 }
 
 
 let colorHard = {
-    bgColor: "bg-rose-200",
-    bgHover: "bg-rose-300",
+    bgColor: "bg-rose-800",
+    bgHover: "bg-rose-900",
 }
 
+colorEasy = {
+    bgColor: "bg-vscode-600",
+    bgHover: "bg-vscode-700",
+}
+
+colorMedium = {
+    bgColor: "bg-vscode-700",
+    bgHover: "bg-vscode-800",
+}
+
+colorHard = {
+    bgColor: "bg-vscode-800",
+    bgHover: "bg-vscode-900",
+}
+
+
+
 const menu = {
-    "JS Conditions": [
-        {
-            hash: "ex8",
-            label: "Exercicio Easy 1",
-        },
-        {
-            hash: "ex9",
-            label: "Exercicio Easy 1",
-        },
-        {
-            hash: "ex8",
-            label: "Exercicio Easy 1",
-        },
-        {
-            hash: "ex9",
-            label: "Exercicio Easy 1",
-        }
-    ],
+    
     easy: [
         {
             hash: "ex8",
@@ -47,8 +47,8 @@ const menu = {
             ...colorEasy
         },
         {
-            hash: "ex8",
-            label: "Exercicio Easy 1",
+            hash: "HelloWorld",
+            label: "Exercicio Easy 3",
             ...colorEasy
         },
         {
