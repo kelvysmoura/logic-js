@@ -1,6 +1,9 @@
 
 export default {
-  value: 'console.log()',
+  customConfig: {
+    saveRawCodeAfterTimeout: 2000
+  },
+  value: '',
   language: 'javascript',
   theme: 'vs-dark',
   wrapIndent: 'same',
@@ -9,11 +12,11 @@ export default {
   roundedSelection: false,
   mouseWheelZoom: true,
   linkedEditing: true,
-  fontSize: 16,
+  fontSize: 18,
   extraEditorClassName: "",
   automaticLayout: true,
   padding: {
-    top: 20,
+    top: 0,
   },
   suggest: {
     showFunctions: true,

@@ -1,5 +1,6 @@
 
-const EXERCISE_LOADED = {}
+const EXERCISE_LOADED = {};
+const HASH_LOADED = {};
 
 export const redirect = (to) => {
     location.hash = to
@@ -13,10 +14,14 @@ export const renderComponent = async (id, content) => {
     }
 }
 
-export const getHash = function (url) {
-    url = document.location.href;
-    url = new URL(url);
-    return url.hash.slice(1);
+export const getHash = function () {
+    let url = document.location.href;
+    if(HASH_LOADED[url]) {
+        return HASH_LOADED[url]
+    }
+    let hash = (new URL(url)).hash.slice(1);
+    HASH_LOADED[url] = hash;
+    return HASH_LOADED[url];
 }
 
 export const loadExerciseDescription =  async (hash) => {
@@ -44,4 +49,14 @@ export const loadExercise = async (hash) => {
 
 export const getCurrentExercise = () => {
     return loadExercise(getHash());
+}
+
+export const randomString = (qty = 1) => {
+    return Array(qty).fill(true).map(() => {
+        return Math.random().toString(16).replace('0.', '');
+    }).join('_');
+}
+
+export async function sleep(seconds) {
+    return await new Promise(revolve => setTimeout(revolve, seconds * 1000));
 }

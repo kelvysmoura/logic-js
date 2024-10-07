@@ -142,7 +142,7 @@ for(let level in menu) {
         itemsToExport.push(`
             <span class="block px-2 py-1 text-upper">${level}</span>
             ${menuElement.join('\n')}
-            `)
+        `)
     }
 }
 

@@ -1,38 +1,66 @@
-import EditorConfig from "./monaco-editor-config.js";
-import loadComponents from "./load-components.js";
-import { 
-    renderComponent, 
+import {
+    renderComponent,
     loadExercise, loadExerciseDescription,
-    getHash,
+    getHash, sleep,
     getCurrentExercise
 } from "./app.js";
 
-const editor = monaco.editor.create(document.getElementById('editor'), EditorConfig);
+import { StartEditor } from "./editor.js";
+import loadComponents from "./load-components.js";
+import ValidateTypes from "./validate-types.js";
+import ExerciseCaseItem from "./components/ExerciseCaseItem.js";
+import storage from './storage.js';
+import UpdateCaseItem from "./components/UpdateCaseItem.js";
+import { STATUS } from "./consts.js";
+
+let editor = StartEditor('editor');
 
 Object.entries(loadComponents).forEach(async ([name, content]) => {
     renderComponent(name, content)
 });
 
 let runCodeButton = document.getElementById('run-code');
-
 runCodeButton.addEventListener('click', async () => {
     let exercise = await getCurrentExercise();
-    try{
-        exercise.cases.forEach(caseItem => {
-            caseItem.validate(editor.getValue());
-        })
-    } catch(e) {
-        alert(e.message)
+    for (let [index, caseItem] of exercise.cases.entries()) {
+        let id = `${exercise.name}-${index}`;
+        UpdateCaseItem({
+            id,
+            status: STATUS.LOADING
+        });
+        await sleep(1);
+
+        try {
+            if (caseItem.validate(editor.getValue())) {
+                UpdateCaseItem({
+                    id,
+                    status: STATUS.SUCCESS
+                });
+            }
+        } catch (e) {
+            UpdateCaseItem({
+                id,
+                status: STATUS.ERROR,
+                message: e.message
+            });
+        }
     }
     
 });
 
-
-
 const bootstrap = async () => {
-    let exercise = await getCurrentExercise()
-    let content = await loadExerciseDescription(getHash());
-    renderComponent("ExerciseContentByHash", content);
+    let exercise = await getCurrentExercise();
+    if(exercise) {
+        let content = await loadExerciseDescription(getHash());
+        let cases = exercise.cases.map((item, index) => {
+            return ExerciseCaseItem({ ...item, id: `${exercise.name}-${index}` });
+        });
+        renderComponent("ExerciseContentByHash", content);
+        renderComponent('ExerciseCases', cases.join(''));
+        editor.setValue(storage.rawCode());
+    }
+    console.log(exercise);
+    
 };
 
 window.addEventListener('hashchange', bootstrap);
